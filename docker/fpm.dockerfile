@@ -33,6 +33,13 @@ RUN apt-get install -y p7zip \
 RUN apt-get update
 RUN apt install nano
 
+RUN apt-get update
+
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
 WORKDIR /var/www/developstoday_test.com
 
 ARG DOCKER_BASE_IMAGE=ftp
