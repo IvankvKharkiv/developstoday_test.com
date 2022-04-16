@@ -32,18 +32,13 @@ services:
     postgresql:
         image: postgres
         ports:
-            - 3306:3306
+            - 5432:5432
         environment:
             - POSTGRES_PASSWORD=root
-            - POSTGRES_DB=laravel_test_1
+            - POSTGRES_USER=root
+            - POSTGRES_DB=postgres
+            - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
             -   ./docker/sqldatadir:/var/lib/postgresql/data/pgdata
-
-
-#    mailer:
-#        image: tophfr/mailcatcher
-#        ports:
-#            - 1080:80
-#            - 1081:25
 
                 
