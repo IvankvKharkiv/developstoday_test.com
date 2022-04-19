@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
+use App\Dto\NewsPostsInput;
 use App\Repository\NewsPostsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: NewsPostsRepository::class)]
+#[ApiResource(input: NewsPostsInput::class)]
 class NewsPosts
 {
     #[ORM\Id]
@@ -62,7 +66,12 @@ class NewsPosts
         return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+
+    /**
+     * @param \DateTimeInterface|null $creationDate
+     * @return $this
+     */
+    public function setCreationDate(\DateTimeInterface|null $creationDate): self
     {
         $this->creationDate = $creationDate;
 
