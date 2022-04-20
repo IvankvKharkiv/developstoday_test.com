@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "7fe78861-3d74-4a88-9166-9eb367d8ca7f",
+		"name": "test_task_developstoday",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "News_Posts",
+			"item": [
+				{
+					"name": "Create_News_Post",
+					"item": [
+						{
+							"name": "Create news post. All params.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Title #1\",\n    \"link\": \"http://developstoday_test.com:8082/api/news_posts/30\",\n    \"creationDate\": \"2022-04-18T18:16:01+00:00\",\n    \"amountOfUpvotes\": 12,\n    \"authorName\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{basic_url}}/api/news_posts",
+									"host": [
+										"{{basic_url}}"
+									],
+									"path": [
+										"api",
+										"news_posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create news post. 4 params.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Title #1\",\n    \"creationDate\": \"2022-04-18T18:16:01+00:00\",\n    \"amountOfUpvotes\": 12,\n    \"authorName\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{basic_url}}/api/news_posts",
+									"host": [
+										"{{basic_url}}"
+									],
+									"path": [
+										"api",
+										"news_posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create news post. 3 params.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Title #1\",\n    \"creationDate\": \"2022-04-18T18:16:01+00:00\",\n    \"authorName\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{basic_url}}/api/news_posts",
+									"host": [
+										"{{basic_url}}"
+									],
+									"path": [
+										"api",
+										"news_posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create news post. 2 params.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Title #1\",\n    \"authorName\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{basic_url}}/api/news_posts",
+									"host": [
+										"{{basic_url}}"
+									],
+									"path": [
+										"api",
+										"news_posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update_News_Post",
+					"item": [
+						{
+							"name": "Update news post. All params.",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Title #1_edited_again12312\",\n    \"link\": \"http://developstoday_test.com:8082/api/news_posts/30\",\n    \"creationDate\": \"2022-04-18T18:16:01+00:00\",\n    \"amountOfUpvotes\": 12,\n    \"authorName\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://developstoday_test.com:8082/api/news_posts/3",
+									"protocol": "http",
+									"host": [
+										"developstoday_test",
+										"com"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"news_posts",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Read News Posts",
+					"item": [
+						{
+							"name": "Read all news post.",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://developstoday_test.com:8082/api/news_posts",
+									"protocol": "http",
+									"host": [
+										"developstoday_test",
+										"com"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"news_posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read one news post.",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://developstoday_test.com:8082/api/news_posts/4",
+									"protocol": "http",
+									"host": [
+										"developstoday_test",
+										"com"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"news_posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete_News_Posts",
+					"item": [
+						{
+							"name": "Delete one news post.",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "XDEBUG_SESSION=PHPSTORM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://developstoday_test.com:8082/api/news_posts/4",
+									"protocol": "http",
+									"host": [
+										"developstoday_test",
+										"com"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"news_posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Upvote one news post.",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://developstoday_test.com:8082/api/news_posts/5?upvote=upvote",
+							"protocol": "http",
+							"host": [
+								"developstoday_test",
+								"com"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"news_posts",
+								"5"
+							],
+							"query": [
+								{
+									"key": "upvote",
+									"value": "upvote"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"NewsPosts\": 4,\n  \"AuthorName\": \"string\",\n  \"Content\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://developstoday_test.com:8082/api/comments",
+							"protocol": "http",
+							"host": [
+								"developstoday_test",
+								"com"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all Comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://developstoday_test.com:8082/api/comments",
+							"protocol": "http",
+							"host": [
+								"developstoday_test",
+								"com"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read one Comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basic_url}}/api/comments/11",
+							"host": [
+								"{{basic_url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"NewsPosts\": 4,\n  \"AuthorName\": \"string1111\",\n  \"Content\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basic_url}}/api/comments/11",
+							"host": [
+								"{{basic_url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XDEBUG_SESSION=PHPSTORM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basic_url}}/api/comments/11",
+							"host": [
+								"{{basic_url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "basic_url",
+			"value": "http://developstoday_test.com:8082"
+		}
+	]
+}

@@ -58,7 +58,9 @@ class NewsPostsInputDataTransformer implements \ApiPlatform\Core\DataTransformer
         $newsPost->setLink($object->link ?: $this->parameterBag->get('app.baseurl') . 'api/news_posts/');
         $newsPost->setAuthorName($object->authorName);
         $newsPost->setAmountOfUpvotes($object->amountOfUpvotes ? $object->amountOfUpvotes : 0);
-        $date = \DateTime::createFromFormat(\DateTime::RFC3339, $object->creationDate);
+        $date = $object->creationDate ?
+            \DateTime::createFromFormat(\DateTime::RFC3339, $object->creationDate) :
+            new \DateTime();
         $newsPost->setCreationDate($date ?: new \DateTime());
         if (!$object->link) {
             $this->entityManager->persist($newsPost);

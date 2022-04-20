@@ -47,6 +47,15 @@ class NewsPostsRepository extends ServiceEntityRepository
         }
     }
 
+    public function resetUpvotes()
+    {
+        $conn = $this->getEntityManager()
+            ->getConnection();
+        $sql = 'UPDATE postgres.public.news_posts SET amount_of_upvotes = 0 WHERE 1 =1';
+        $stmt = $conn->prepare($sql);
+        $stmt->executeQuery();
+    }
+
     // /**
     //  * @return NewsPosts[] Returns an array of NewsPosts objects
     //  */

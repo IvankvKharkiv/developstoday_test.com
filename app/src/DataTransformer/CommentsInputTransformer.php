@@ -39,6 +39,10 @@ class CommentsInputTransformer implements \ApiPlatform\Core\DataTransformer\Data
     public function transform($object, string $to, array $context = [])
     {
         $post = $this->newsPostsRepository->findOneBy(['id' => $object->NewsPosts]);
+        if (!$post) {
+            throw new \Exception('Post with id = ' . $object->NewsPosts . ' does not exist.');
+        }
+
         $request = $this->requestStack->getCurrentRequest();
 
         if (!empty($request)) {
