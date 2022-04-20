@@ -14,7 +14,8 @@
       $ cd usr/src/app/ <br>
       $ yarn build <br>
    After that go to http://developstoday_test.com:8082/api
-4. Import PostMan API collection from test_task_developstoday.postman_collection.json and test it.
+4. Migrate migrations from symfony.
+5. Import PostMan API collection from test_task_developstoday.postman_collection.json and test it.
 
 <br>
 <br>
