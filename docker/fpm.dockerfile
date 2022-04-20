@@ -12,28 +12,6 @@ RUN pecl install xdebug\
     && docker-php-ext-enable xdebug
 
 RUN apt-get update
-RUN apt install mc -y
-RUN apt install iproute2 -y
-
-
-RUN apt-get install -y p7zip \
-    p7zip-full \
-    unace \
-    zip \
-    unzip \
-    xz-utils \
-    sharutils \
-    uudeview \
-    mpack \
-    arj \
-    cabextract \
-    file-roller \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update
-RUN apt install nano
-
-RUN apt-get update
 
 # Install Postgre PDO
 RUN apt-get install -y libpq-dev \
