@@ -2,25 +2,28 @@
 
 namespace App\DataTransformer;
 
-use App\Entity\NewsPosts;
+use App\Entity\Comments;
+use App\Repository\CommentsRepository;
 use App\Repository\NewsPostsRepository;
 use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 
-class NewsPostsInputDataTransformer implements \ApiPlatform\Core\DataTransformer\DataTransformerInterface
+class CommentsInputTransformer implements \ApiPlatform\Core\DataTransformer\DataTransformerInterface
 {
 
     private EntityManager $entityManager;
     private ParameterBagInterface $parameterBag;
     private RequestStack $requestStack;
+    private CommentsRepository $CommentsRepository;
     private NewsPostsRepository $newsPostsRepository;
 
     public function __construct(
         EntityManager $entityManager,
         ParameterBagInterface $parameterBag,
         RequestStack $requestStack,
+        CommentsRepository $CommentsRepository,
         NewsPostsRepository $newsPostsRepository
     )
     {
@@ -28,6 +31,7 @@ class NewsPostsInputDataTransformer implements \ApiPlatform\Core\DataTransformer
         $this->entityManager = $entityManager;
         $this->parameterBag = $parameterBag;
         $this->requestStack = $requestStack;
+        $this->CommentsRepository = $CommentsRepository;
         $this->newsPostsRepository = $newsPostsRepository;
     }
 
@@ -36,44 +40,25 @@ class NewsPostsInputDataTransformer implements \ApiPlatform\Core\DataTransformer
      */
     public function transform($object, string $to, array $context = [])
     {
+        $post = $this->newsPostsRepository->findOneBy(['id'=>$object->NewsPosts]);
         $request = $this->requestStack->getCurrentRequest();
-
-
-
-
 
         if (!empty($request)) {
             $id= $request->get('id');
             $method = $request->getMethod();
         }
-
-        if ($method === 'PUT' && $request->get('upvote') && $id) {
-            $newsPost = $this->newsPostsRepository->findOneBy(['id'=>$id]);
-            $newsPost->upvote();
-            return  $newsPost;
-        }
-
-
+        
         if($method === 'POST' || !$id) {
-            $newsPost = new NewsPosts();
+            $comment = new Comments();
         }else{
-            $newsPost = $this->newsPostsRepository->findOneBy(['id'=>$id]);
+            $comment = $this->CommentsRepository->findOneBy(['id'=>$id]);
         }
 
-        $newsPost->setTitle($object->title);
-        $newsPost->setLink($object->link ?: $this->parameterBag->get("app.baseurl") . 'api/news_posts/');
-        $newsPost->setAuthorName($object->authorName);
-        $newsPost->setAmountOfUpvotes($object->amountOfUpvotes ? $object->amountOfUpvotes : 0);
-        $date = \DateTime::createFromFormat(\DateTime::RFC3339, $object->creationDate);
-        $newsPost->setCreationDate($date ?: new \DateTime());
-        if(!$object->link){
-            $this->entityManager->persist($newsPost);
-            $newsPost->setLink($newsPost->getLink() . $newsPost->getId());
-        }
-
-        $this->entityManager->persist($newsPost);
-        $this->entityManager->flush();
-        return $newsPost;
+        $comment->setauthorName($object->AuthorName);
+        $comment->setContent($object->Content);
+        $comment->setNewsPosts($post);
+        $comment->setCreationDate(new \DateTime());
+        return $comment;
 
     }
 
@@ -82,10 +67,10 @@ class NewsPostsInputDataTransformer implements \ApiPlatform\Core\DataTransformer
      */
     public function supportsTransformation($data, string $to, array $context = []): bool
     {
-        if ($data instanceof NewsPosts) {
+        if ($data instanceof Comments) {
             return false;
         }
 
-        return NewsPosts::class === $to && null !== ($context['input']['class'] ?? null);
+        return Comments::class === $to && null !== ($context['input']['class'] ?? null);
     }
 }
