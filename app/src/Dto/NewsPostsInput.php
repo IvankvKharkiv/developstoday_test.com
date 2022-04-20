@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dto;
 
 class NewsPostsInput
 {
     /**
-     * @var integer
+     * @var int
      */
     public $id;
+
     /**
      * @var string
      */
@@ -24,7 +27,7 @@ class NewsPostsInput
     public $creationDate;
 
     /**
-     * @var integer|null
+     * @var int|null
      */
     public $amountOfUpvotes;
 
@@ -32,6 +35,4 @@ class NewsPostsInput
      * @var string
      */
     public $authorName;
-
-
 }

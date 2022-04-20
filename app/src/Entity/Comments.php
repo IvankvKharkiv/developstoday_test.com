@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Dto\CommentsInput;
 use App\Repository\CommentsRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,21 +19,21 @@ class Comments
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: NewsPosts::class, inversedBy: "comments")]
+    #[ORM\ManyToOne(targetEntity: NewsPosts::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $newsPosts;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $authorName;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $content;
 
     #[ORM\Column(type: 'datetime')]
-    #[Groups("read")]
+    #[Groups('read')]
     private $creationDate;
 
     public function getId(): ?int

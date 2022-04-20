@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dto;
 
 class CommentsInput
 {
     /**
-     * @var integer
+     * @var int
      */
     public $NewsPosts;
 
@@ -18,6 +20,4 @@ class CommentsInput
      * @var string
      */
     public $Content;
-
-
 }

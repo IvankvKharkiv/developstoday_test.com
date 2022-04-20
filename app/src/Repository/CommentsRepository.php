@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Comments;
@@ -11,8 +13,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @method Comments|null find($id, $lockMode = null, $lockVersion = null)
  * @method Comments|null findOneBy(array $criteria, array $orderBy = null)
- * @method Comments[]    findAll()
- * @method Comments[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comments[] findAll()
+ * @method Comments[] findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CommentsRepository extends ServiceEntityRepository
 {

@@ -1,21 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Dto\NewsPostsInput;
 use App\Repository\NewsPostsRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
-use phpDocumentor\Reflection\Types\False_;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 #[ORM\Entity(repositoryClass: NewsPostsRepository::class)]
 #[ApiResource(
     forceEager: false,
     input: NewsPostsInput::class,
-    normalizationContext: ['groups'=>['read']]
+    normalizationContext: ['groups' => ['read']]
 )]
 class NewsPosts
 {
@@ -25,28 +24,28 @@ class NewsPosts
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $link;
 
     #[ORM\Column(type: 'datetime')]
-    #[Groups("read")]
+    #[Groups('read')]
     private $creationDate;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $amountOfUpvotes;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $authorName;
 
-    #[ORM\OneToMany(mappedBy: "newsPosts", targetEntity: Comments::class, cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(mappedBy: 'newsPosts', targetEntity: Comments::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups("read")]
+    #[Groups('read')]
     private $comments;
 
     public function getId(): ?int
@@ -83,9 +82,9 @@ class NewsPosts
         return $this->creationDate;
     }
 
-
     /**
      * @param \DateTimeInterface|null $creationDate
+     *
      * @return $this
      */
     public function setCreationDate(\DateTimeInterface|null $creationDate): self
@@ -135,7 +134,8 @@ class NewsPosts
         $this->comments = $comments;
     }
 
-    public function upvote () {
-        ++$this->amountOfUpvotes;
+    public function upvote()
+    {
+        $this->amountOfUpvotes++;
     }
 }
